@@ -1,0 +1,319 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tiresias Wikipedia Page: Selected Sample TEI Encoding</title>
+    <style>
+        * {
+          box-sizing: border-box;
+          }
+          
+:root{
+--paper: #F6F2E9;
+--paper-raised: #FBF9F3;
+--ink: #201C16;
+--ink-soft: #4A453C;
+--note: #6B655A;
+--rule: #C7BFA9;
+--rule-strong: #A79C82;
+--accent: #7A2E2E;
+--event-tint: #EDE5D0;
+--accent-soft: #9C5B4A;
+--link: #9c2507;
+--serif: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+--mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+--nav-h: 3.4rem;
+--measure: 640px;
+}
+
+*{ box-sizing: border-box; }
+
+html{
+scroll-behavior: smooth;
+scroll-padding-top: calc(var(--nav-h) + 0.5rem);
+}
+
+@media (prefers-reduced-motion: reduce){
+html{ scroll-behavior: auto; }
+*{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+body{
+margin: 0;
+background: var(--paper);
+color: var(--ink);
+font-family: var(--serif);
+font-size: 18px;
+line-height: 1.55;
+-webkit-font-smoothing: antialiased;
+}
+
+.page {
+max-width: 960px;
+margin: 0 auto;
+padding: 2.5rem 2rem 4rem;
+}
+
+header {
+margin-bottom: 2rem;
+}
+
+
+h1, h2 {
+    font-size: clamp(2rem, 3vw, 2.1rem);
+    font-weight: 600;
+    margin: 0 0 1.6rem;
+    letter-spacing: -0.005em;
+}
+
+h1 {
+margin: 0;
+padding-bottom: 0.25rem;
+border-bottom: 1px solid #a2a9b1;
+font-size: 2.25rem;
+}
+
+.encoding-title {
+margin: 0.65rem 0 0;
+color: #54595d;
+font-size: 0.95rem;
+}
+
+.source {
+margin: 0.35rem 0 0;
+color: #54595d;
+font-size: 0.9rem;
+}
+
+h2 {
+margin: 2.25rem 0 0.75rem;
+padding-bottom: 0.2rem;
+border-bottom: 1px solid #a2a9b1;
+font-size: 1.55rem;
+}
+
+h3 {
+margin: 1.75rem 0 0.6rem;
+color: #202122;
+font-size: 1.1rem;
+font-weight: 600;
+line-height: 1.4;
+}
+
+p {
+margin: 0.75rem 0;
+}
+
+a {
+color: var(--accent);
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+.entity {
+color: var(--accent);
+}
+
+.work {
+font-style: italic;
+}
+
+.quotation {
+font-style: italic;
+}
+
+.gap {
+margin: 1.5rem 0;
+color: #72777d;
+font-size: 0.9rem;
+text-align: center;
+}
+
+@media (max-width: 700px) {
+.page {
+padding: 1.5rem 1rem 3rem;
+}
+
+h1 {
+font-size: 1.9rem;
+}
+
+h2 {
+font-size: 1.4rem;
+}
+}
+
+.figdesc {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.rs.event {
+    font-style: italic;
+  background: var(--event-tint);
+  padding: 0.05em 0.15em;
+  border-radius: 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Linked entities: same red as plain entities, underline only on hover */
+a.entity, a.work {
+  color: var(--accent);
+  text-decoration: none;
+}
+a.entity:hover, a.work:hover,
+a.entity:focus-visible, a.work:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.work { color: inherit; }
+a.work { color: var(--accent); }
+
+/* Dates */
+.date { font-weight: 700; }
+
+/* Footnote markers in the running text */
+.note-ref {
+  font-size: 0.7em;
+  line-height: 0;
+  vertical-align: super;
+  font-style: normal;
+  font-weight: 600;
+}
+.note-ref a { color: var(--accent); }
+
+/* Footnotes at the bottom of the text */
+.footnotes {
+  margin-top: 3.5rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+.footnotes hr {
+  width: 30%;
+  margin: 0 0 1rem;
+  border: 0;
+  border-top: 1px solid var(--rule-strong);
+}
+.footnotes h2 {
+  margin: 0 0 0.75rem;
+  border: 0;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+.footnotes ol { list-style: none; margin: 0; padding: 0; }
+.footnotes li { display: flex; gap: 0.5em; margin: 0 0 0.5rem; }
+.footnotes .note-num { color: var(--accent); font-weight: 600; min-width: 1.4em; }
+.footnotes .backref { margin-left: 0.3em; color: var(--accent); }
+.footnotes li:target { background: var(--event-tint); }
+
+figure { margin: 2rem 0; }
+figure img { display: block; max-width: 100%; max-height: 55vh; height: auto; }
+figcaption { margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.4; color: var(--ink-soft); }
+
+        </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>Tiresias</h1>
+        <p class="encoding-title">Tiresias Wikipedia Page: Selected Sample TEI Encoding</p>
+        <p class="source">Source: <a href="https://en.wikipedia.org/wiki/Tiresias">Tiresias</a>, accessed 24 September 2026</p>
+      </header>
+      <main>
+
+      
+      <section id="intro">
+        <h2><span class="entity">Tiresias</span></h2>
+        <p>In Greek mythology, <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> (Ancient Greek: &#932;&#949;&#953;&#961;&#949;&#963;&#943;&#945;&#962;, romanized: Teires&#237;as) was a blind <a class="entity" href="https://www.wikidata.org/wiki/Q214267" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q214267">prophet</a> of Apollo in <a class="entity" href="https://www.wikidata.org/wiki/Q101583" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q101583">Thebes</a>, famous for clairvoyance and for <span class="rs event" title="event: sex_change">being transformed into a woman for seven years</span>. He was the son of the shepherd Everes and the nymph Chariclo. <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> participated fully in seven generations in <a class="entity" href="https://www.wikidata.org/wiki/Q101583" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q101583">Thebes</a>, beginning as advisor to Cadmus, the founder of <a class="entity" href="https://www.wikidata.org/wiki/Q101583" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q101583">Thebes</a>.</p>
+
+        <figure><img src="../assets//images/kraus_engraving.jpg"/><figcaption><a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> strikes two snakes with a stick, and is <span class="rs event" title="event: sex_change">transformed into a woman</span> by <a class="entity" href="http://www.wikidata.org/entity/Q38012" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q38012">Hera</a>. Engraving by <span class="entity">Johann Ulrich Kraus</span> c. 1690. Taken from <a class="work" href="https://www.wikidata.org/wiki/Q184742" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q184742">Die Verwandlungen des Ovidii</a> (The <a class="work" href="https://www.wikidata.org/wiki/Q184742" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q184742">Metamorphoses</a> of <a class="entity" href="https://www.wikidata.org/wiki/Q7198" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q7198">Ovid</a>).</figcaption></figure>
+
+        <figure><img src="../assets/images/della_vecchia_painting.jpg"/><figcaption><span class="entity">Pietro della Vecchia</span>, <span class="work">Tiresias Transformed into a Woman</span>, 17th century.</figcaption></figure>
+      </section>
+
+      
+      <section id="mythology">
+        <h2>Mythology</h2>
+        <p>Eighteen allusions to mythic <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>, noted by Luc Brisson, fall into three groups: the first recounts <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>' <span class="rs event" title="event: sex_change">sex-change episode</span> and later <span class="rs event" title="event: zeus_hera_dispute">his encounter with <a class="entity" href="https://www.wikidata.org/wiki/Q34201" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q34201">Zeus</a> and <a class="entity" href="http://www.wikidata.org/entity/Q38012" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q38012">Hera</a></span>; the second group recounts his blinding by Athena; the third, all but lost, seems to have recounted the misadventures of <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>.</p>
+
+        
+        <section id="sex_change_section">
+          <h3>Sex change</h3>
+          <p><span class="rs event" title="event: sex_change">On <a class="entity" href="https://www.wikidata.org/wiki/Q1232572" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q1232572">Mount Cyllene</a> in the Peloponnese,<sup class="note-ref"><a id="noteref-1" href="#note-1" title="Note 1">1</a></sup> <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> came upon a pair of copulating snakes and hit them with his stick, upon which he was transformed into a woman.</span> Afterwards, as told by Phlegon, god of prophecy Apollo informed <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>: if she spots copulating snakes and similarly harms them, she will return to her previous form. After seven years as a woman,<sup class="note-ref"><a id="noteref-2" href="#note-2" title="Note 2">2</a></sup> <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> found mating snakes; depending on the myth, she either made sure to leave the snakes alone this time, or, according to Hyginus and Phlegon, trampled them. In both outcomes, <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> was released from the sentence and changed back to a man.</p>
+          <p>According to Eustathius, <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> was originally a woman who promised Apollo her favours in exchange for musical lessons, only to reject him afterwards. She was turned by Apollo into a man, then again a woman under unclear circumstances, then a man by the offended <a class="entity" href="http://www.wikidata.org/entity/Q38012" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q38012">Hera</a>, then into a woman by <a class="entity" href="https://www.wikidata.org/wiki/Q34201" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q34201">Zeus</a>. She became a man once again after an encounter with the Muses, until finally Aphrodite turned him into a woman again and then into a mouse.</p>
+        </section>
+
+        <p class="gap">--- omitted from the selected sample ---</p>
+
+        
+        <section id="dispute_section">
+          <h3>The dispute between Zeus and Hera</h3>
+          <p>On another account behind <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>' blindness and his gift,<sup class="note-ref"><a id="noteref-6" href="#note-6" title="Note 6">6</a></sup> <span class="rs event" title="event: zeus_hera_dispute">he was drawn into an argument between goddess <a class="entity" href="http://www.wikidata.org/entity/Q38012" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q38012">Hera</a> and her husband <a class="entity" href="https://www.wikidata.org/wiki/Q34201" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q34201">Zeus</a>, arguing whether <span class="quotation">"the pleasures of love are felt more by women or by men"</span>, with <a class="entity" href="http://www.wikidata.org/entity/Q38012" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q38012">Hera</a> taking the side of men, <a class="entity" href="https://www.wikidata.org/wiki/Q34201" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q34201">Zeus</a> putting himself in opposition, and <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> making the final judgement as someone who had experienced both pleasures.</span> <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> said, <span class="quotation">"Of ten parts a man enjoys one only; But a woman enjoys the full ten parts in her heart"</span>. <a class="entity" href="http://www.wikidata.org/entity/Q38012" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q38012">Hera</a> struck him blind, but <a class="entity" href="https://www.wikidata.org/wiki/Q34201" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q34201">Zeus</a>, in recompense, gave <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> the <a class="entity" href="https://www.wikidata.org/wiki/Q214267" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q214267">gift of foresight</a> and a lifespan of <span class="quotation">"seven ordinary lives"</span>.</p>
+        </section>
+
+        
+        <section id="prophecy_section">
+          <h3>Prophecy</h3>
+          <p>Like other oracles, the circumstances in which <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> received his <a class="entity" href="https://www.wikidata.org/wiki/Q214267" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q214267">prophecies</a> varied. Sometimes he would receive visions, listen for the songs of birds, or burn offerings or entrails, interpreting <a class="entity" href="https://www.wikidata.org/wiki/Q214267" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q214267">prophecies</a> through pictures that appeared in the smoke. Pliny the Elder credited <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> with the invention of augury.</p>
+          <p class="gap">--- omitted from the selected sample ---</p>
+          <p>In <a class="entity" href="https://www.wikidata.org/wiki/Q7198" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q7198">Ovid</a>'s <a class="work" href="https://www.wikidata.org/wiki/Q184742" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q184742">Metamorphoses</a>, <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>' <span class="quotation">"fame of prophecy was spread through all the cities of Aonia"</span>, and nymph Liriope was the first to request his <a class="entity" href="https://www.wikidata.org/wiki/Q214267" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q214267">prophecy</a>, asking him about the future of her son <a class="entity" href="https://www.wikidata.org/wiki/Q179256" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q179256">Narcissus</a>. <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> predicted that the boy would live a long life only if he never <span class="quotation">"came to know himself"</span>.</p>
+        </section>
+
+        
+        <section id="thebes_section">
+          <h3>Thebes and Greek tragedy</h3>
+          <p><a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> has been a recurring character in stories and Greek tragedies concerning the legendary history of <a class="entity" href="https://www.wikidata.org/wiki/Q101583" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q101583">Thebes</a>.</p>
+          <p class="gap">--- omitted from the selected sample ---</p>
+          <p>In <a class="entity" href="https://www.wikidata.org/wiki/Q7235" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q7235">Sophocles</a>' <a class="work" href="https://www.wikidata.org/wiki/Q148643x" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q148643x">Oedipus Rex</a>, the city of <a class="entity" href="https://www.wikidata.org/wiki/Q101583" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q101583">Thebes</a> was struck by a plague of infertility, affecting crops, livestock, and the people. King Oedipus asserted that he would end the pestilence. He sent Creon, the brother of his consort, to the Oracle at Delphi, seeking guidance. When Creon returned, Oedipus learned that the tragic death of the previous king Laius brought the plague, and his murder must be brought to justice to save the city. Creon also suggested that they try to find <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>, who was widely respected. Oedipus sent for <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>, and <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> admitted to knowing the answers to Oedipus' questions, but he refused to speak, instead telling Oedipus to abandon his search. Angered by the seer's reply, Oedipus accused him of complicity in Laius' murder, which offended <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>. <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> revealed to the king that <span class="quotation">"you yourself are the criminal you seek"</span>. Oedipus did not understand how this could be, and supposed that Creon must have paid <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> to accuse him. The two argued vehemently, and Jocasta entered and tried to calm Oedipus by telling him the story of her first-born son and his supposed death. Oedipus became nervous as he realized that he may have murdered Laius and so brought about the plague. The prophet left.</p>
+        </section>
+
+        <p class="gap">--- omitted from the selected sample ---</p>
+
+        
+        <section id="seer_section">
+          <h3>The seer</h3>
+          <p>As a seer, <span class="quotation">"Tiresias"</span> was <span class="quotation">"a common title for soothsayers throughout Greek legendary history"</span>. In Greek literature, <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a>' pronouncements are always given in short maxims which are often cryptic (gnomic), but never wrong. Often when his name is attached to a mythic <a class="entity" href="https://www.wikidata.org/wiki/Q214267" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q214267">prophecy</a>, it is introduced simply to supply a personality to the generic example of a seer, not by any inherent connection of <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> with the myth: thus it is <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> who tells Amphitryon of <a class="entity" href="https://www.wikidata.org/wiki/Q34201" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q34201">Zeus</a> and Alcmena and warns the mother of <a class="entity" href="https://www.wikidata.org/wiki/Q179256" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q179256">Narcissus</a> that the boy will thrive as long as he never knows himself. This is his emblematic role in tragedy. Like most oracles, he is generally extremely reluctant to offer the whole of what he sees in his visions.</p>
+        </section>
+      </section>
+
+      <p class="gap">--- omitted from the selected sample ---</p>
+
+      
+      <section id="reception">
+        <h2>In literature</h2>
+        <p class="gap">--- omitted from the selected sample ---</p>
+        <p><a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> is featured in <a class="entity" href="https://www.wikidata.org/wiki/Q37767" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q37767">T. S. Eliot</a>'s poem <a class="work" href="https://www.wikidata.org/wiki/Q581458" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q581458">The Waste Land</a> (Section III, The Fire Sermon) and in a note <a class="entity" href="https://www.wikidata.org/wiki/Q37767" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q37767">Eliot</a> states that <a class="entity" href="http://www.wikidata.org/entity/Q656881" target="_blank" rel="noopener" title="Wikidata: http://www.wikidata.org/entity/Q656881">Tiresias</a> is <span class="quotation">"the most important personage in the poem, uniting all the rest."</span></p>
+        <p class="gap">--- omitted from the selected sample ---</p>
+      </section>
+
+    </main>
+      <section class="footnotes" id="notes">
+        <hr/>
+        <h2>Notes</h2>
+        <ol>
+          <li id="note-1">
+            <span class="note-num">1.</span>
+            <span>Eustathius and John Tzetzes place this episode on Mount Cithaeron in Boeotia, near the territory of <a class="entity" href="https://www.wikidata.org/wiki/Q101583" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q101583">Thebes</a>.<a class="backref" href="#noteref-1" title="Back to text">&#8617;</a></span>
+          </li>
+          <li id="note-2">
+            <span class="note-num">2.</span>
+            <span>The period referenced from <a class="entity" href="https://www.wikidata.org/wiki/Q7198" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q7198">Ovid</a>'s <a class="work" href="https://www.wikidata.org/wiki/Q184742" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q184742">Metamorphoses</a>.<a class="backref" href="#noteref-2" title="Back to text">&#8617;</a></span>
+          </li>
+          <li id="note-6">
+            <span class="note-num">6.</span>
+            <span>This account has been briefly mentioned by Hyginus, Fabula 75; <a class="entity" href="https://www.wikidata.org/wiki/Q7198" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q7198">Ovid</a> treated it at length in <a class="work" href="https://www.wikidata.org/wiki/Q184742" target="_blank" rel="noopener" title="Wikidata: https://www.wikidata.org/wiki/Q184742">Metamorphoses</a> III.<a class="backref" href="#noteref-6" title="Back to text">&#8617;</a></span>
+          </li>
+        </ol>
+      </section>
+    </div>
+  </body>
+</html>

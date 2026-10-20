@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thebes · Tiresias Linked Open Data</title>
+  <link rel="stylesheet" href="../../css/tufte-sep.css">
+</head>
+<body>
+
+  <header class="sep-banner">
+    <div class="sep-banner-inner">
+      <a href="../../index.html" class="sep-site-title">
+        Tiresias LOD
+      </a>
+      <nav class="sep-nav-links">
+        <a href="html/knowledge-organization.html">Knowledge Organization</a>
+        <a href="html/knowledge-representation.html" target="_blank">Knowledge Representation</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Sub-bar -->
+  <div class="sep-subnav">
+    <div class="sep-subnav-inner">
+      <a href="../../index.html">Home</a>
+      <span class="separator">›</span>
+
+      <span class="current">Thebes</span>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="page-container">
+    <article class="dossier-card">
+      
+      <!-- Dossier Heading -->
+      <header class="dossier-header">
+        <h1 class="dossier-title">Thebes</h1>
+        <p class="dossier-subtitle">Ancient City in Boeotia, Greece</p>
+      </header>
+
+      <!-- Two-Column Dossier Grid -->
+      <div class="dossier-grid">
+        
+        <!-- Left: Image / Visual Media -->
+        <div class="dossier-media">
+          
+            <figure class="dossier-figure">
+              <img src="../../assets/images/thebes.webp" 
+                   onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='../assets/images/thebes.webp';}else if(this.dataset.retry==1){this.dataset.retry=2;this.src='../../image/thebes.webp';}else{this.src='../image/thebes.webp';}"
+                   alt="Thebes" 
+                   loading="lazy">
+              <figcaption class="figure-caption">
+                Archaeological landscape of ancient Thebes (Boeotia, Greece).
+              </figcaption>
+            </figure>
+        
+        </div>
+
+        <!-- Right: Text Description & Attached Predicates -->
+        <div class="dossier-content">
+          <p class="dossier-description">
+            The historic Greek city in Boeotia. Thebes is the primary civic setting of Tiresias' prophetic activity, counsel to Cadmus and Creon, and the dramatic setting for Sophocles' tragedy Oedipus Rex.
+          </p>
+
+          <div>
+            <h2 class="dossier-section-heading">Attached Predicates &amp; Semantic Relations</h2>
+            <table class="metadata-table">
+              <tbody>
+                
+            <tr>
+              <td class="metadata-label">
+                <span class="pred-name">rdf:type</span>
+                <span class="pred-human">Entity Type</span>
+              </td>
+              <td class="metadata-value">
+                <span class="type-badge">schema:Place</span>
+              </td>
+            </tr>
+        
+            <tr>
+              <td class="metadata-label">
+                <span class="pred-name">owl:sameAs</span>
+                <span class="pred-human">Authority Match (sameAs)</span>
+              </td>
+              <td class="metadata-value">
+                <a href="https://www.wikidata.org/wiki/Q101583" target="_blank" rel="noopener" class="authority-link">Wikidata Q101583 <span class="ext-arrow">↗</span></a>
+              </td>
+            </tr>
+        
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Raw RDF Turtle Representation -->
+          <div class="rdf-code-box">
+            <div class="rdf-code-header">RDF Graph Fragment (Turtle)</div>
+            <pre><code>@prefix : <https://tiresias-lod.github.io/TiresiasLOD/ontology/TiresiasOntology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+:thebes a schema:Place ;
+    rdfs:label "Thebes"@en ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q101583> .</code></pre>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Pagination Footer -->
+      <footer class="item-pagination">
+        <a href="mount_cyllene.html" class="pagination-btn">← Previous: Mount Cyllene</a>
+        <a href="../../index.html" class="pagination-btn center">Catalog Index</a>
+        <a href="metamorphoses.html" class="pagination-btn">Next: Metamorphoses →</a>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- Stanford Encyclopedia of Philosophy Style Academic Footer -->
+  <footer class="sep-footer">
+    <div class="sep-footer-inner">
+      <div class="sep-footer-col">
+        <strong>Tiresias: A Linked Open Data Exploration</strong><br>
+        Information Science and Cultural Heritage (DHDK) · A.Y. 2025/2026<br>
+        Alma Mater Studiorum – Università di Bologna
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

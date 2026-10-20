@@ -1,0 +1,111 @@
+@prefix : <https://tiresias-lod.github.io/TiresiasLOD/ontology/TiresiasOntology#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+:della_vecchia_painting a schema:VisualArtwork ;
+    rdfs:label "Tiresias Transformed into a Woman"@en ;
+    dcterms:creator :pietro_della_vecchia ;
+    crm:P62_depicts :sex_change,
+        :tiresias .
+
+:kraus_engraving a schema:VisualArtwork ;
+    rdfs:label "Tiresias strikes two snakes and is transformed into a woman by Hera"@en ;
+    dcterms:creator :johann_ulrich_kraus ;
+    crm:P62_depicts :hera,
+        :sex_change,
+        :tiresias ;
+    :illustrates :metamorphoses .
+
+:oedipus_rex a dbo:Play ;
+    rdfs:label "Oedipus Rex"@en ;
+    dcterms:creator :sophocles ;
+    crm:P129_is_about :prophecy ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q148643x> ;
+    schema:character :tiresias ;
+    schema:contentLocation :thebes .
+
+:the_waste_land a dbo:WrittenWork ;
+    rdfs:label "The Waste Land"@en ;
+    dcterms:creator :ts_eliot ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q581458> ;
+    schema:character :tiresias .
+
+:tiresias_wikipedia_page rdfs:label "Tiresias"@en .
+
+:johann_ulrich_kraus rdfs:label "Johann Ulrich Kraus"@en .
+
+:metamorphoses a dbo:WrittenWork ;
+    rdfs:label "Metamorphoses"@en ;
+    dcterms:creator :ovid ;
+    crm:P129_is_about :sex_change,
+        :zeus_hera_dispute ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q184742> ;
+    schema:character :narcissus,
+        :tiresias .
+
+:mount_cyllene a dbo:Mountain ;
+    rdfs:label "Mount Cyllene"@en ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q1232572> ;
+    schema:containedInPlace dbr:Peloponnese .
+
+:ovid rdfs:label "Ovid"@en ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q7198> .
+
+:pietro_della_vecchia rdfs:label "Pietro della Vecchia"@en .
+
+:sophocles rdfs:label "Sophocles"@en ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q7235> .
+
+:ts_eliot rdfs:label "T. S. Eliot"@en ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q37767> .
+
+:narcissus a dbo:MythologicalFigure ;
+    rdfs:label "Narcissus"@en ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q179256> .
+
+:thebes a schema:Place ;
+    rdfs:label "Thebes"@en ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q101583> .
+
+:zeus a dbo:Deity ;
+    rdfs:label "Zeus"@en ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q34201> .
+
+:zeus_hera_dispute a crm:E5_Event ;
+    rdfs:label "Dispute between Zeus and Hera judged by Tiresias"@en ;
+    crm:P11_had_participant :hera,
+        :tiresias,
+        :zeus ;
+    :isPreconditionedBy :sex_change ;
+    :resultsIn :prophecy .
+
+:hera a dbo:Deity ;
+    rdfs:label "Hera"@en ;
+    owl:sameAs <http://www.wikidata.org/entity/Q38012> ;
+    schema:spouse :zeus .
+
+:prophecy a skos:Concept ;
+    rdfs:label "Prophecy"@en ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q214267> .
+
+:sex_change a crm:E7_Activity ;
+    rdfs:label "Transformation of Tiresias into a woman"@en ;
+    crm:P11_had_participant :tiresias ;
+    crm:P120_occurs_before :zeus_hera_dispute ;
+    crm:P14_carried_out_by :hera ;
+    crm:P7_took_place_at :mount_cyllene .
+
+:tiresias a dbo:MythologicalFigure ;
+    rdfs:label "Tiresias"@en,
+        "Τειρεσίας"@grc ;
+    owl:sameAs <http://www.wikidata.org/entity/Q656881> ;
+    schema:workLocation :thebes ;
+    :hasGift :prophecy ;
+    :prophesiedAbout :narcissus .
+

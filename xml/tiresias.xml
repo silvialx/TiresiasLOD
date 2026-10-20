@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="https://vault.tei-c.org/P5/current/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0" type="application/xml"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader xml:lang="en">
+    <fileDesc>
+      <titleStmt>
+        <title>Tiresias Wikipedia Page: Selected Sample TEI Encoding</title>
+        <respStmt>
+          <resp>selected and annotated by</resp>
+          <persName>Silvia Lusenti</persName>
+        </respStmt>
+      </titleStmt>
+
+
+      <publicationStmt>
+        <publisher>University of Bologna</publisher>
+        <pubPlace>Bologna, Italy</pubPlace>
+        <date when="2026">2026</date>
+        <availability>
+          <licence target="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 (text derived from English Wikipedia)</licence>
+        </availability>
+      </publicationStmt>
+
+
+      <sourceDesc>
+        <bibl xml:id="tiresias_wikipedia_page">
+          <title level="a">Tiresias</title>
+          <publisher>Wikimedia Foundation</publisher>
+          <ptr target="https://en.wikipedia.org/wiki/Tiresias"/>
+          <date type="accessed" when="2026-09-24">24 September 2026</date>
+        </bibl>
+
+
+        <!--Works -->
+        <listBibl type="selected_works">
+          <!-- Metamorphoses -->
+          <bibl xml:id="metamorphoses" type="narrativePoem" sameAs="https://www.wikidata.org/wiki/Q184742">
+            <title level="m">Metamorphoses</title>
+            <author ref="#ovid"/>
+            <date type="composition" notBefore="0001" notAfter="0008">c. 8 AD</date>
+          </bibl>
+          <!-- Oedipus Rex -->
+          <bibl xml:id="oedipus_rex" type="tragedy" sameAs="https://www.wikidata.org/wiki/Q148643x">
+            <title level="m">Oedipus Rex</title>
+            <author ref="#sophocles"/>
+          </bibl>
+          <!--The Waste Land -->
+          <bibl xml:id="the_waste_land" type="poem" sameAs="https://www.wikidata.org/wiki/Q581458">
+            <title level="m">The Waste Land</title>
+            <author ref="#ts_eliot"/>
+            <date type="publicationYear" when="1922">1922</date>
+          </bibl>
+        </listBibl>
+
+        <!-- ARTWORKS-->
+        <listObject type="artworks">
+          <!--Kraus engraving -->
+          <object xml:id="kraus_engraving">
+            <objectIdentifier>
+              <objectName>Tiresias strikes two snakes and is transformed into a woman by Hera</objectName>
+            </objectIdentifier>
+            <physDesc>
+              <p>Engraving</p>
+            </physDesc>
+            <history>
+              <origin>
+                <persName ref="#johann_ulrich_kraus">Johann Ulrich Kraus</persName>, <origDate when="1690" cert="low">c. 1690</origDate>.
+                Published in <title>Die Verwandlungen des Ovidii</title>.
+              </origin>
+            </history>
+          </object>
+          <!--Pietro della Vecchia painting -->
+          <object xml:id="della_vecchia_painting">
+            <objectIdentifier>
+              <objectName>Tiresias Transformed into a Woman</objectName>
+            </objectIdentifier>
+            <physDesc>
+              <p>Painting</p>
+            </physDesc>
+            <history>
+              <origin>
+                <persName ref="#pietro_della_vecchia">Pietro della Vecchia</persName>, <origDate notBefore="1600" notAfter="1699">17th century</origDate>.
+              </origin>
+            </history>
+          </object>
+        </listObject>
+
+        <!-- EVENTS  -->
+        <listEvent type="mythological_events">
+          <!-- Sex change of Tiresias -->
+          <event xml:id="sex_change" type="transformation">
+            <label>Transformation of Tiresias into a woman</label>
+            <desc>On Mount Cyllene Tiresias strikes a pair of copulating snakes and is turned into a woman for seven years.</desc>
+          </event>
+          <!-- Dispute between Zeus and Hera -->
+          <event xml:id="zeus_hera_dispute" type="dispute">
+            <label>Dispute between Zeus and Hera judged by Tiresias</label>
+            <desc>Having lived as both man and woman, Tiresias judges whether men or women feel the pleasures of love more; Hera strikes him blind and Zeus grants him foresight.</desc>
+          </event>
+        </listEvent>
+
+        <!-- CONCEPTS-->
+        <list type="concepts">
+          <!--Prophecy / foresight -->
+          <item xml:id="prophecy" sameAs="https://www.wikidata.org/wiki/Q214267">
+            <term>Prophecy</term>
+          </item>
+        </list>
+
+
+        <listRelation>
+          <!-- ============== RDF TYPES OF THE SELECTED ENTITIES ============== -->
+          <relation active="#tiresias" name="rdf:type" passive="dbo:MythologicalFigure"/>
+          <relation active="#narcissus" name="rdf:type" passive="dbo:MythologicalFigure"/>
+          <relation active="#hera" name="rdf:type" passive="dbo:Deity"/>
+          <relation active="#zeus" name="rdf:type" passive="dbo:Deity"/>
+          <relation active="#sex_change" name="rdf:type" passive="crm:E7_Activity"/>
+          <relation active="#zeus_hera_dispute" name="rdf:type" passive="crm:E5_Event"/>
+          <relation active="#mount_cyllene" name="rdf:type" passive="dbo:Mountain"/>
+          <relation active="#thebes" name="rdf:type" passive="schema:Place"/>
+          <relation active="#metamorphoses" name="rdf:type" passive="dbo:WrittenWork"/>
+          <relation active="#oedipus_rex" name="rdf:type" passive="dbo:Play"/>
+          <relation active="#the_waste_land" name="rdf:type" passive="dbo:WrittenWork"/>
+          <relation active="#kraus_engraving" name="rdf:type" passive="schema:VisualArtwork"/>
+          <relation active="#della_vecchia_painting" name="rdf:type" passive="schema:VisualArtwork"/>
+          <relation active="#prophecy" name="rdf:type" passive="skos:Concept"/>
+
+          <!-- ============== IDENTITY AND ROLE OF TIRESIAS ============== -->
+          <relation active="#tiresias" name="schema:workLocation" passive="#thebes"/>
+          <relation active="#tiresias" name="tir:hasGift" passive="#prophecy"/>
+
+          <!-- ============== THE SEX CHANGE ============== -->
+          <relation active="#sex_change" name="crm:P11_had_participant" passive="#tiresias"/>
+          <relation active="#sex_change" name="crm:P7_took_place_at" passive="#mount_cyllene"/>
+          <!-- Stated only in the caption of the Kraus engraving -->
+          <relation active="#sex_change" name="crm:P14_carried_out_by" passive="#hera"/>
+
+          <!-- ============== THE DISPUTE BETWEEN ZEUS AND HERA ============== -->
+          <relation active="#zeus_hera_dispute" name="crm:P11_had_participant" passive="#tiresias"/>
+          <relation active="#zeus_hera_dispute" name="crm:P11_had_participant" passive="#hera"/>
+          <relation active="#zeus_hera_dispute" name="crm:P11_had_participant" passive="#zeus"/>
+          <!-- Tiresias can judge only because he has lived as both man and woman -->
+          <relation active="#sex_change" name="crm:P120_occurs_before" passive="#zeus_hera_dispute"/>
+          <relation active="#zeus_hera_dispute" name="tir:isPreconditionedBy" passive="#sex_change"/>
+          <!-- Zeus grants foresight in recompense for the blindness inflicted by Hera -->
+          <relation active="#zeus_hera_dispute" name="tir:resultsIn" passive="#prophecy"/>
+          <relation active="#hera" name="schema:spouse" passive="#zeus"/>
+
+          <!-- ============== PLACES ============== -->
+          <relation active="#mount_cyllene" name="schema:containedInPlace" passive="dbr:Peloponnese"/>
+
+          <!-- ============== LITERARY SOURCES AND RECEPTION ============== -->
+          <relation active="#metamorphoses" name="dcterms:creator" passive="#ovid"/>
+          <relation active="#metamorphoses" name="schema:character" passive="#tiresias"/>
+          <relation active="#metamorphoses" name="schema:character" passive="#narcissus"/>
+          <relation active="#metamorphoses" name="crm:P129_is_about" passive="#sex_change"/>
+          <relation active="#metamorphoses" name="crm:P129_is_about" passive="#zeus_hera_dispute"/>
+          <relation active="#tiresias" name="tir:prophesiedAbout" passive="#narcissus"/>
+
+          <relation active="#oedipus_rex" name="dcterms:creator" passive="#sophocles"/>
+          <relation active="#oedipus_rex" name="schema:character" passive="#tiresias"/>
+          <relation active="#oedipus_rex" name="schema:contentLocation" passive="#thebes"/>
+          <relation active="#oedipus_rex" name="crm:P129_is_about" passive="#prophecy"/>
+
+          <relation active="#the_waste_land" name="dcterms:creator" passive="#ts_eliot"/>
+          <relation active="#the_waste_land" name="schema:character" passive="#tiresias"/>
+
+          <!-- ============== VISUAL REPRESENTATIONS ============== -->
+          <relation active="#kraus_engraving" name="dcterms:creator" passive="#johann_ulrich_kraus"/>
+          <relation active="#kraus_engraving" name="crm:P62_depicts" passive="#sex_change"/>
+          <relation active="#kraus_engraving" name="crm:P62_depicts" passive="#tiresias"/>
+          <relation active="#kraus_engraving" name="crm:P62_depicts" passive="#hera"/>
+          <relation active="#kraus_engraving" name="tir:illustrates" passive="#metamorphoses"/>
+
+          <relation active="#della_vecchia_painting" name="dcterms:creator" passive="#pietro_della_vecchia"/>
+          <relation active="#della_vecchia_painting" name="crm:P62_depicts" passive="#sex_change"/>
+          <relation active="#della_vecchia_painting" name="crm:P62_depicts" passive="#tiresias"/>
+        </listRelation>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <particDesc>
+        <listPerson type="mythological">
+          <!-- Tiresias -->
+          <person xml:id="tiresias" sameAs="http://www.wikidata.org/entity/Q656881" role="prophet">
+            <persName>Tiresias</persName>
+            <persName type="alternative" xml:lang="grc">Τειρεσίας</persName>
+            <occupation>Blind prophet of Apollo</occupation>
+          </person>
+          <!-- Hera -->
+          <person xml:id="hera" sameAs="http://www.wikidata.org/entity/Q38012" role="deity">
+            <persName>Hera</persName>
+          </person>
+          <!-- Zeus -->
+          <person xml:id="zeus" sameAs="https://www.wikidata.org/wiki/Q34201" role="deity">
+            <persName>Zeus</persName>
+          </person>
+          <!--  Narcissus -->
+          <person xml:id="narcissus" sameAs="https://www.wikidata.org/wiki/Q179256" role="mythologicalCharacter">
+            <persName>Narcissus</persName>
+          </person>
+        </listPerson>
+
+        <!-- Supporting entities-->
+        <listPerson type="real">
+          <person xml:id="ovid" sameAs="https://www.wikidata.org/wiki/Q7198" role="author">
+            <persName>Ovid</persName>
+          </person>
+          <person xml:id="sophocles" sameAs="https://www.wikidata.org/wiki/Q7235" role="author">
+            <persName>Sophocles</persName>
+          </person>
+          <person xml:id="ts_eliot" sameAs="https://www.wikidata.org/wiki/Q37767" role="author">
+            <persName>T. S. Eliot</persName>
+          </person>
+          <person xml:id="johann_ulrich_kraus" role="engraver">
+            <persName>
+              <forename>Johann Ulrich</forename>
+              <surname>Kraus</surname>
+            </persName>
+          </person>
+          <person xml:id="pietro_della_vecchia" role="painter">
+            <persName>
+              <forename>Pietro</forename>
+              <surname>della Vecchia</surname>
+            </persName>
+          </person>
+        </listPerson>
+      </particDesc>
+
+      <settingDesc>
+        <listPlace>
+          <!--Mount Cyllene -->
+          <place xml:id="mount_cyllene" type="mountain" sameAs="https://www.wikidata.org/wiki/Q1232572">
+            <placeName>Mount Cyllene</placeName>
+            <region>Peloponnese</region>
+            <country>Greece</country>
+          </place>
+          <!--Thebes -->
+          <place xml:id="thebes" type="city" sameAs="https://www.wikidata.org/wiki/Q101583">
+            <placeName>Thebes</placeName>
+            <region>Boeotia</region>
+            <country>Greece</country>
+          </place>
+        </listPlace>
+      </settingDesc>
+    </profileDesc>
+
+    <encodingDesc>
+      <projectDesc>
+        <p>This TEI/XML document was created for an individual Information Science and Cultural Heritage project on the figure of Tiresias, exploring how a single mythological figure connects places, events, deities, literary works and visual artworks across Antiquity, early modern art and modernist poetry.</p>
+      </projectDesc>
+      <samplingDecl>
+        <p>Selected excerpts from the English Wikipedia article "Tiresias", including two image captions and three explanatory notes, were encoded according to their relevance to the selected entities. Omitted passages are marked with <gi>gap</gi> elements with reason="sampling".</p>
+      </samplingDecl>
+      <listPrefixDef>
+        <prefixDef ident="tir" matchPattern="([A-Za-z0-9_-]+)" replacementPattern="https://example.org/tiresias/ontology#$1">
+          <p>Local Tiresias project ontology (replace with the final project namespace)</p>
+        </prefixDef>
+        <prefixDef ident="crm" matchPattern="([A-Za-z0-9_-]+)" replacementPattern="http://www.cidoc-crm.org/cidoc-crm/$1">
+          <p>CIDOC Conceptual Reference Model</p>
+        </prefixDef>
+        <prefixDef ident="dbo" matchPattern="([A-Za-z0-9_-]+)" replacementPattern="http://dbpedia.org/ontology/$1">
+          <p>DBpedia Ontology</p>
+        </prefixDef>
+        <prefixDef ident="dbr" matchPattern="([A-Za-z0-9_(),.-]+)" replacementPattern="http://dbpedia.org/resource/$1">
+          <p>DBpedia Resources</p>
+        </prefixDef>
+        <prefixDef ident="schema" matchPattern="([A-Za-z0-9_-]+)" replacementPattern="https://schema.org/$1">
+          <p>Schema.org</p>
+        </prefixDef>
+        <prefixDef ident="dcterms" matchPattern="([A-Za-z0-9_-]+)" replacementPattern="http://purl.org/dc/terms/$1">
+          <p>Dublin Core Terms</p>
+        </prefixDef>
+        <prefixDef ident="rdf" matchPattern="([A-Za-z0-9_-]+)" replacementPattern="http://www.w3.org/1999/02/22-rdf-syntax-ns#$1">
+          <p>RDF Vocabulary</p>
+        </prefixDef>
+        <prefixDef ident="skos" matchPattern="([A-Za-z0-9_-]+)" replacementPattern="http://www.w3.org/2004/02/skos/core#$1">
+          <p>SKOS Vocabulary</p>
+        </prefixDef>
+      </listPrefixDef>
+    </encodingDesc>
+  </teiHeader>
+
+  <text xml:lang="en">
+    <body>
+
+      <!-- ============================= INTRODUCTION ============================ -->
+      <div type="section" xml:id="intro">
+        <head><persName ref="#tiresias">Tiresias</persName></head>
+        <p>In Greek mythology, <persName ref="#tiresias">Tiresias</persName> (Ancient Greek: <foreign xml:lang="grc">Τειρεσίας</foreign>, romanized: <foreign xml:lang="grc-Latn">Teiresías</foreign>) was a blind <term ref="#prophecy">prophet</term> of Apollo in <placeName ref="#thebes">Thebes</placeName>, famous for clairvoyance and for <rs type="event" ref="#sex_change">being transformed into a woman for seven years</rs>. He was the son of the shepherd Everes and the nymph Chariclo. <persName ref="#tiresias">Tiresias</persName> participated fully in seven generations in <placeName ref="#thebes">Thebes</placeName>, beginning as advisor to Cadmus, the founder of <placeName ref="#thebes">Thebes</placeName>.</p>
+
+        <figure corresp="#kraus_engraving">
+          <graphic url="../assets//images/kraus_engraving.jpg"></graphic>
+          <figDesc><persName ref="#tiresias">Tiresias</persName> strikes two snakes with a stick, and is <rs type="event" ref="#sex_change">transformed into a woman</rs> by <persName ref="#hera">Hera</persName>. Engraving by <persName ref="#johann_ulrich_kraus">Johann Ulrich Kraus</persName> <date when="1690" cert="low">c. 1690</date>. Taken from <title ref="#metamorphoses">Die Verwandlungen des Ovidii</title> (The <title ref="#metamorphoses">Metamorphoses</title> of <persName ref="#ovid">Ovid</persName>).</figDesc>
+        </figure>
+
+        <figure corresp="#della_vecchia_painting">
+          <graphic url="../assets/images/della_vecchia_painting.jpg"></graphic>
+          <figDesc><persName ref="#pietro_della_vecchia">Pietro della Vecchia</persName>, <title ref="#della_vecchia_painting">Tiresias Transformed into a Woman</title>, <date notBefore="1600" notAfter="1699">17th century</date>.</figDesc>
+        </figure>
+      </div>
+
+      <!-- ============================= MYTHOLOGY ============================ -->
+      <div type="section" xml:id="mythology">
+        <head>Mythology</head>
+        <p>Eighteen allusions to mythic <persName ref="#tiresias">Tiresias</persName>, noted by Luc Brisson, fall into three groups: the first recounts <persName ref="#tiresias">Tiresias</persName>' <rs type="event" ref="#sex_change">sex-change episode</rs> and later <rs type="event" ref="#zeus_hera_dispute">his encounter with <persName ref="#zeus">Zeus</persName> and <persName ref="#hera">Hera</persName></rs>; the second group recounts his blinding by Athena; the third, all but lost, seems to have recounted the misadventures of <persName ref="#tiresias">Tiresias</persName>.</p>
+
+        <!-- ===== Sex change ===== -->
+        <div type="subsection" xml:id="sex_change_section">
+          <head>Sex change</head>
+          <p><rs type="event" ref="#sex_change">On <placeName ref="#mount_cyllene">Mount Cyllene</placeName> in the Peloponnese,<note type="explanatory" n="1" place="bottom">Eustathius and John Tzetzes place this episode on Mount Cithaeron in Boeotia, near the territory of <placeName ref="#thebes">Thebes</placeName>.</note> <persName ref="#tiresias">Tiresias</persName> came upon a pair of copulating snakes and hit them with his stick, upon which he was transformed into a woman.</rs> Afterwards, as told by Phlegon, god of prophecy Apollo informed <persName ref="#tiresias">Tiresias</persName>: if she spots copulating snakes and similarly harms them, she will return to her previous form. After seven years as a woman,<note type="explanatory" n="2" place="bottom">The period referenced from <persName ref="#ovid">Ovid</persName>'s <title ref="#metamorphoses">Metamorphoses</title>.</note> <persName ref="#tiresias">Tiresias</persName> found mating snakes; depending on the myth, she either made sure to leave the snakes alone this time, or, according to Hyginus and Phlegon, trampled them. In both outcomes, <persName ref="#tiresias">Tiresias</persName> was released from the sentence and changed back to a man.</p>
+          <p>According to Eustathius, <persName ref="#tiresias">Tiresias</persName> was originally a woman who promised Apollo her favours in exchange for musical lessons, only to reject him afterwards. She was turned by Apollo into a man, then again a woman under unclear circumstances, then a man by the offended <persName ref="#hera">Hera</persName>, then into a woman by <persName ref="#zeus">Zeus</persName>. She became a man once again after an encounter with the Muses, until finally Aphrodite turned him into a woman again and then into a mouse.</p>
+        </div>
+
+        <gap reason="sampling"/>
+
+        <!-- ===== Dispute between Zeus and Hera ===== -->
+        <div type="subsection" xml:id="dispute_section">
+          <head>The dispute between Zeus and Hera</head>
+          <p>On another account behind <persName ref="#tiresias">Tiresias</persName>' blindness and his gift,<note type="explanatory" n="6" place="bottom">This account has been briefly mentioned by Hyginus, Fabula 75; <persName ref="#ovid">Ovid</persName> treated it at length in <title ref="#metamorphoses">Metamorphoses</title> III.</note> <rs type="event" ref="#zeus_hera_dispute">he was drawn into an argument between goddess <persName ref="#hera">Hera</persName> and her husband <persName ref="#zeus">Zeus</persName>, arguing whether <q>"the pleasures of love are felt more by women or by men"</q>, with <persName ref="#hera">Hera</persName> taking the side of men, <persName ref="#zeus">Zeus</persName> putting himself in opposition, and <persName ref="#tiresias">Tiresias</persName> making the final judgement as someone who had experienced both pleasures.</rs> <persName ref="#tiresias">Tiresias</persName> said, <q>"Of ten parts a man enjoys one only; But a woman enjoys the full ten parts in her heart"</q>. <persName ref="#hera">Hera</persName> struck him blind, but <persName ref="#zeus">Zeus</persName>, in recompense, gave <persName ref="#tiresias">Tiresias</persName> the <term ref="#prophecy">gift of foresight</term> and a lifespan of <q>"seven ordinary lives"</q>.</p>
+        </div>
+
+        <!-- ===== Prophecy ===== -->
+        <div type="subsection" xml:id="prophecy_section">
+          <head>Prophecy</head>
+          <p>Like other oracles, the circumstances in which <persName ref="#tiresias">Tiresias</persName> received his <term ref="#prophecy">prophecies</term> varied. Sometimes he would receive visions, listen for the songs of birds, or burn offerings or entrails, interpreting <term ref="#prophecy">prophecies</term> through pictures that appeared in the smoke. Pliny the Elder credited <persName ref="#tiresias">Tiresias</persName> with the invention of augury.</p>
+          <gap reason="sampling"/>
+          <p>In <persName ref="#ovid">Ovid</persName>'s <title ref="#metamorphoses">Metamorphoses</title>, <persName ref="#tiresias">Tiresias</persName>' <q>"fame of prophecy was spread through all the cities of Aonia"</q>, and nymph Liriope was the first to request his <term ref="#prophecy">prophecy</term>, asking him about the future of her son <persName ref="#narcissus">Narcissus</persName>. <persName ref="#tiresias">Tiresias</persName> predicted that the boy would live a long life only if he never <q>"came to know himself"</q>.</p>
+        </div>
+
+        <!-- ===== Theban tragedy ===== -->
+        <div type="subsection" xml:id="thebes_section">
+          <head>Thebes and Greek tragedy</head>
+          <p><persName ref="#tiresias">Tiresias</persName> has been a recurring character in stories and Greek tragedies concerning the legendary history of <placeName ref="#thebes">Thebes</placeName>.</p>
+          <gap reason="sampling"/>
+          <p>In <persName ref="#sophocles">Sophocles</persName>' <title ref="#oedipus_rex">Oedipus Rex</title>, the city of <placeName ref="#thebes">Thebes</placeName> was struck by a plague of infertility, affecting crops, livestock, and the people. King Oedipus asserted that he would end the pestilence. He sent Creon, the brother of his consort, to the Oracle at Delphi, seeking guidance. When Creon returned, Oedipus learned that the tragic death of the previous king Laius brought the plague, and his murder must be brought to justice to save the city. Creon also suggested that they try to find <persName ref="#tiresias">Tiresias</persName>, who was widely respected. Oedipus sent for <persName ref="#tiresias">Tiresias</persName>, and <persName ref="#tiresias">Tiresias</persName> admitted to knowing the answers to Oedipus' questions, but he refused to speak, instead telling Oedipus to abandon his search. Angered by the seer's reply, Oedipus accused him of complicity in Laius' murder, which offended <persName ref="#tiresias">Tiresias</persName>. <persName ref="#tiresias">Tiresias</persName> revealed to the king that <q>"you yourself are the criminal you seek"</q>. Oedipus did not understand how this could be, and supposed that Creon must have paid <persName ref="#tiresias">Tiresias</persName> to accuse him. The two argued vehemently, and Jocasta entered and tried to calm Oedipus by telling him the story of her first-born son and his supposed death. Oedipus became nervous as he realized that he may have murdered Laius and so brought about the plague. The prophet left.</p>
+        </div>
+
+        <gap reason="sampling"/>
+
+        <!-- ===== Tiresias as seer ===== -->
+        <div type="subsection" xml:id="seer_section">
+          <head>The seer</head>
+          <p>As a seer, <q>"Tiresias"</q> was <q>"a common title for soothsayers throughout Greek legendary history"</q>. In Greek literature, <persName ref="#tiresias">Tiresias</persName>' pronouncements are always given in short maxims which are often cryptic (gnomic), but never wrong. Often when his name is attached to a mythic <term ref="#prophecy">prophecy</term>, it is introduced simply to supply a personality to the generic example of a seer, not by any inherent connection of <persName ref="#tiresias">Tiresias</persName> with the myth: thus it is <persName ref="#tiresias">Tiresias</persName> who tells Amphitryon of <persName ref="#zeus">Zeus</persName> and Alcmena and warns the mother of <persName ref="#narcissus">Narcissus</persName> that the boy will thrive as long as he never knows himself. This is his emblematic role in tragedy. Like most oracles, he is generally extremely reluctant to offer the whole of what he sees in his visions.</p>
+        </div>
+      </div>
+
+      <gap reason="sampling"/>
+
+      <!-- ============================= IN LITERATURE ============================ -->
+      <div type="section" xml:id="reception">
+        <head>In literature</head>
+        <gap reason="sampling"/>
+        <p><persName ref="#tiresias">Tiresias</persName> is featured in <persName ref="#ts_eliot">T. S. Eliot</persName>'s poem <title ref="#the_waste_land">The Waste Land</title> (Section III, The Fire Sermon) and in a note <persName ref="#ts_eliot">Eliot</persName> states that <persName ref="#tiresias">Tiresias</persName> is <q>"the most important personage in the poem, uniting all the rest."</q></p>
+        <gap reason="sampling"/>
+      </div>
+
+    </body>
+  </text>
+</TEI>

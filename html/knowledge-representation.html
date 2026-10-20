@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge Representation · Tiresias Linked Open Data</title>
+  <link rel="stylesheet" href="../css/tufte-sep.css">
+  <style>
+    /* Page-specific styles for the Knowledge Representation phases */
+    .page-kicker {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--sep-cardinal);
+      margin-bottom: 0.4rem;
+    }
+    .workflow-section {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-rule);
+    }
+
+    .workflow-num {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--sep-cardinal);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
+    }
+    .workflow-heading {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      color: var(--sep-cardinal-dark);
+      margin: 0 0 1rem 0;
+      line-height: 1.25;
+    }
+    .workflow-sub {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--sep-cardinal-dark);
+      margin: 2rem 0 0.6rem;
+    }
+    .code-preview {
+      background: var(--paper-subtle);
+      border: 1px solid var(--border-rule);
+      border-left: 3px solid var(--sep-cardinal);
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      overflow-x: auto;
+      line-height: 1.45;
+      border-radius: 2px;
+      white-space: pre;
+    }
+
+    /* File viewer: header with file name and format, scrollable preview */
+    .file-viewer {
+      margin: 1rem 0 0.5rem;
+      background: var(--paper-subtle);
+      border: 1px solid var(--border-rule);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .file-viewer-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--paper-inset);
+      padding: 0.45rem 0.85rem;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      border-bottom: 1px solid var(--border-rule);
+    }
+    .file-viewer-header strong { color: var(--ink-primary); }
+    .file-viewer-header span { color: var(--ink-muted); }
+    .file-viewer pre {
+      margin: 0;
+      padding: 0.85rem 1rem;
+      max-height: 26rem;
+      overflow: auto;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--ink-primary);
+      white-space: pre;
+    }
+    .file-viewer iframe {
+      display: block;
+      width: 100%;
+      height: 32rem;
+      border: 0;
+      background: #ffffff;
+    }
+    .resource-link-box {
+      margin: 0.5rem 0 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+    }
+    .resource-link-box a {
+      font-weight: 600;
+      color: var(--sep-cardinal);
+    }
+
+    .closing-note { max-width: var(--measure); font-size: 1.05rem; }
+    .back-to-top { font-family: var(--font-sans); font-size: 0.85rem; margin-top: 1.5rem; }
+    .pagination-btn small { display: block; color: var(--ink-muted); font-weight: 400; }
+  </style>
+</head>
+<body id="top" class="page-gutter">
+
+  <!-- Stanford Encyclopedia of Philosophy Style Top Header -->
+  <header class="sep-banner">
+    <div class="sep-banner-inner">
+      <a href="../index.html" class="sep-site-title">
+        Tiresias LOD
+      </a>
+      <nav class="sep-nav-links">
+        <a href="knowledge-organization.html">Knowledge Organization</a>
+        <a href="knowledge-representation.html" class="active">Knowledge Representation</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="sep-subnav">
+    <div class="sep-subnav-inner">
+      <a href="knowledge-representation.html">Home</a>
+      <span class="separator">›</span>
+      <span class="current">Knowledge Representation</span>
+    </div>
+  </div>
+
+  <main class="page-container">
+    <header class="catalog-header" style="text-align: left; margin-bottom: 2rem; margin-top: -2em;">
+      <h1 class="catalog-title" style="font-size: 2.7rem;">From text to RDF</h1>
+      <p class="catalog-desc" style="margin: 0; max-width: 78ch;">
+        A Linked Open Data project exploring the mythological figure of Tiresias across classical antiquity,
+        early modern engravings, and 20th-century modernist literature. This page documents the workflow
+        from TEI/XML text encoding to the XSLT to HTML transformation and the RDF graph rendering.
+      </p>
+    </header>
+
+
+    <section class="workflow-section" id="text-encoding">
+      <h2 class="workflow-heading">TEI Encoding</h2>
+      <p>
+        A curated selection of the <a href="https://en.wikipedia.org/wiki/Tiresias" target="_blank" rel="noopener">English Wikipedia article on Tiresias</a>
+        was encoded according to the <a href="https://tei-c.org/guidelines/p5/"><strong>TEI P5 Guidelines</strong></a>. Passages were sampled according to their relevance to the research,
+        focusing on the portions dealing with the selected elements. Omitted passages are explicitly marked
+        with <code>&lt;gap reason="sampling"&gt;</code>, so that the selection remains visible rather than silently hidden.
+      </p>
+      <p>
+        The <code>&lt;teiHeader&gt;</code> records the primary source, defines the entities mentioned in the selected text
+        (persons, deities, places, literary and visual works, mythological events and concepts) and declares, in
+        <code>&lt;listPrefixDef&gt;</code>, the vocabularies used in the project. Here's a (perhaps more readable) list of the vocabularies used:
+        <ul>
+          <li><a href="https://cidoc-crm.org/">CIDOC-CRM</a>, for identifying relations among cultural objects and figures (<code>P62_depicts</code>, <code>P129_is_about</code>) and or for relating characters or objects to temporal entities (<code>E7_Activity</code>, <code>E5_Event</code>);</li>
+          <li><a href="https://schema.org/">Schema.org</a> for classes like <code>VisualArtwork</code>, which encororates nicely both paintings and engraving, as well as predicates like <code>character</code> or <code>contentLocation</code>;</li>
+          <li><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">Dublin Core</a> for the predicate <code>creator</code> ;</li>
+          <li><a href="https://www.dbpedia.org/">DBpedia</a>, useful both for classes like <code>dbo:Play</code> or <code>WrittenWork</code>, as well as a few predicates, which are all apt for different entities while still maintaining some semantic specificity;</li>
+          <li><a href="https://www.wikidata.org/wiki/Wikidata:Main_Page">Wikidata</a> as object for predicate <code>sameAs</code>;</li>
+          <li>the <a href="../ttl/TiresiasOntology.ttl">local ontology</a>.</li>
+        </ul>
+      </p>
+
+      <h3 class="workflow-sub">Entity annotation and relations</h3>
+      <p>
+        Each entity receives a <b>local identifier</b> and, where available, is reconciled with external authority records
+        (Wikidata, DBpedia) through <code>@sameAs</code>. In the body of the text <b>names</b> are marked with
+        <code>&lt;persName&gt;</code>, <code>&lt;placeName&gt;</code> and <code>&lt;title&gt;</code>, while <b>events</b> such as
+        the sex change or the dispute between Zeus and Hera are marked with <code>&lt;rs type="event"&gt;</code> around the whole
+        passage that narrates them; that's because an event is expressed by a stretch of text, not by a single term.
+        The two <b>artworks</b> are encoded as <code>&lt;figure&gt;</code> elements with a <code>&lt;graphic&gt;</code> pointing to
+        Wikimedia Commons and a <code>&lt;figDesc&gt;</code> describing the image.
+      </p>
+      <p>
+        Semantic relations are recorded in <code>&lt;listRelation&gt;</code>, where <code>@active</code>, <code>@name</code>
+        and <code>@passive</code> correspond respectively to the subject, predicate and object later used by the TEI-to-RDF
+        transformation. A simplified example of the encoding pattern is shown below.
+      </p>
+
+      <div class="code-preview">&lt;person xml:id="tiresias" sameAs="http://www.wikidata.org/entity/Q656881" role="prophet"&gt;
+  &lt;persName&gt;Tiresias&lt;/persName&gt;
+  &lt;persName type="alternative" xml:lang="grc"&gt;Τειρεσίας&lt;/persName&gt;
+  &lt;occupation&gt;Blind prophet of Apollo&lt;/occupation&gt;
+&lt;/person&gt;
+
+&lt;relation active="#tiresias" name="schema:workLocation" passive="#thebes"/&gt;
+&lt;relation active="#tiresias" name="tir:hasGift" passive="#prophecy"/&gt;
+&lt;relation active="#tiresias" name="tir:prophesiedAbout" passive="#narcissus"/&gt;</div>
+
+
+      <h3 class="workflow-sub">TEI/XML document</h3>
+      <div class="file-viewer">
+        <div class="file-viewer-header"><strong>tiresias.xml</strong><span>TEI / XML</span></div>
+        <pre data-src="../xml/tiresias.xml">Loading preview…</pre>
+      </div>
+      <div class="resource-link-box">
+        <a href="../xml/tiresias.xml" target="_blank" rel="noopener">Open full file <span class="ext-arrow">↗</span></a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 02: TRANSFORMATION
+         ============================================================ -->
+    <section class="workflow-section" id="transformation">
+
+      <h2 class="workflow-heading">TEI to HTML</h2>
+      <p>
+        The encoded TEI sample is rendered as a human-readable edition through an XSLT stylesheet
+        (<code>transformation.xsl</code>). Structural divisions become HTML sections,
+        and the encoding description in the TEI header is turned into a short colophon.
+      </p>
+      <p>
+        Each element keeps a distinct visual treatment. Persons, places and works are marked red and linked to their correspondent Wikidata entry; On the other hand events, since
+        they span throughout whole sentences, receive a light background tint instead, and hovering over them shows the event they
+        refer to.
+      </p>
+      <p>
+        Since we're dealing with a myth, it is not uncommon to have multiple versions of a story. The origin of the version told is preserved through <b>explanatory notes</b> that appear at the bottom of the page. 
+        <b>Figures</b> show the image in the text column with their caption in the margin, and sampling gaps remain visible in the output.
+      </p>
+
+      <h3 class="workflow-sub">XSLT stylesheet</h3>
+      <div class="file-viewer">
+        <div class="file-viewer-header"><strong>transformation.xsl</strong><span>XSLT</span></div>
+        <pre data-src="../xml/transformation.xsl">Loading preview…</pre>
+      </div>
+      <div class="resource-link-box">
+        <a href="../xml/transformation.xsl" target="_blank" rel="noopener">Open full file <span class="ext-arrow">↗</span></a>
+      </div>
+
+      <h3 class="workflow-sub">Transformation script</h3>
+      <p>
+        A short Python script based on <code>lxml</code> applies the stylesheet to <strong>tiresias.xml</strong> and writes
+        the resulting document as <strong>xml_to_html.html</strong>.
+      </p>
+      <div class="file-viewer">
+        <div class="file-viewer-header"><strong>to_html.py</strong><span>Python</span></div>
+        <pre data-src="../python/to_html.py">Loading preview…</pre>
+      </div>
+      <div class="resource-link-box">
+        <a href="../python/to_html.py">Open full file <span class="ext-arrow">↗</span></a>
+      </div>
+
+      <h3 class="workflow-sub">HTML output</h3>
+      <p>The generated page provides a reading edition of the selected source text.</p>
+      <div class="file-viewer">
+        <div class="file-viewer-header"><strong>xml_to_html.html</strong><span>Generated HTML</span></div>
+        <iframe src="xml_to_html.html" title="TEI to HTML output: reading edition of the Tiresias sample" loading="lazy"></iframe>
+      </div>
+      <div class="resource-link-box">
+        <a href="xml_to_html.html" target="_blank" rel="noopener">Open in a new tab <span class="ext-arrow">↗</span></a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 03: SEMANTIC TRANSFORMATION
+         ============================================================ -->
+    <section class="workflow-section" id="semantic-transformation">
+      <h2 class="workflow-heading">TEI to RDF</h2>
+      <p>
+        The same TEI document is the source of the RDF graph. Before the transformation, the classes and properties used in the
+        header were collected in a small OWL ontology, so that every predicate in the graph is documented.
+      </p>
+
+      <h3 class="workflow-sub">Ontology</h3>
+      <p>
+        <strong>TiresiasOntology</strong> reuses established vocabularies wherever possible: CIDOC CRM for events and their
+        participants, places and temporal order; the DBpedia Ontology and Schema.org for mythological figures, deities, places
+        and creative works; Dublin Core for authorship; the Europeana Data Model and SKOS for generic links and concepts. Each
+        term is documented with <code>rdfs:isDefinedBy</code>, and a few subclass links connect the vocabularies to each other
+        (for example, <code>dbo:MythologicalFigure</code> ⊑ <code>dbo:FictionalCharacter</code> and
+        <code>schema:VisualArtwork</code> ⊑ <code>schema:CreativeWork</code>).
+      </p>
+      <p>
+        Only five properties are local: <code>tir:hasGift</code>, <code>tir:prophesiedAbout</code>,
+        <code>tir:illustrates</code>, <code>tir:resultsIn</code> and <code>tir:isPreconditionedBy</code>. The first four are
+        declared as subproperties of <code>edm:isRelatedTo</code>; <code>tir:isPreconditionedBy</code> is a subproperty of
+        <code>crm:P120i_occurs_after</code>, because a precondition always comes first, so the temporal order between the
+        dispute and the transformation can be inferred rather than stated. Since Tiresias is a mythological figure while Hera
+        and Zeus are deities, properties such as <code>crm:P11_had_participant</code> and <code>crm:P62_depicts</code> take a
+        union of classes as their range instead of an invented common superclass.
+      </p>
+      <div class="file-viewer">
+        <div class="file-viewer-header"><strong>TiresiasOntology.ttl</strong><span>Turtle / OWL</span></div>
+        <pre data-src="../ttl/TiresiasOntology.ttl">Loading preview…</pre>
+      </div>
+      <div class="resource-link-box">
+        <a href="../ttl/TiresiasOntology.ttl" target="_blank" rel="noopener">Open full file <span class="ext-arrow">↗</span></a>
+      </div>
+
+      <h3 class="workflow-sub">Transformation script</h3>
+      <p>
+        A Python script based on <strong>RDFLib</strong> and <code>lxml</code> (<code>to_rdf.py</code>) parses
+        <code>tiresias.xml</code> and converts the semantic information in the header into RDF triples. Prefixed names are
+        expanded exactly as TEI specifies, using the <code>@matchPattern</code> and <code>@replacementPattern</code> of each
+        <code>&lt;prefixDef&gt;</code>, and the same prefixes are bound in the output, so <code>dbo:</code>, <code>crm:</code>
+        or <code>tir:</code> appear in the Turtle file as they do in the TEI.
+      </p>
+      <p>
+        Local identifiers such as <code>#tiresias</code> or <code>#thebes</code> become URIs in a resource namespace kept
+        separate from the ontology namespace. Each <code>&lt;relation&gt;</code> becomes one triple; attributes holding several
+        values (for example <code>passive="#hera #zeus"</code>) are split into separate triples, and symmetric relations
+        expressed with <code>@mutual</code> are written in both directions. The <code>@sameAs</code> values become
+        <code>owl:sameAs</code> statements linking the graph to Wikidata and DBpedia, and labels are generated with their
+        language tags (<code>@en</code>, <code>@grc</code>). The graph is serialised in Turtle as
+        <code>tiresias_graph.ttl</code> and parsed again as a validation step.
+      </p>
+      <div class="file-viewer">
+        <div class="file-viewer-header"><strong>to_rdf.py</strong><span>Python / RDFLib</span></div>
+        <pre data-src="../python/to_rdf.py">Loading preview…</pre>
+      </div>
+      <div class="resource-link-box">
+        <a href="../python/to_rdf.py" target="_blank" rel="noopener">Open full file <span class="ext-arrow">↗</span></a>
+      </div>
+
+      <h3 class="workflow-sub">TEI-derived RDF</h3>
+      <p>
+        The resulting <strong>tiresias_graph.ttl</strong> represents the entities and relations contained in the selected TEI
+        sample. Some DBpedia resources, such as Thebes, are written as full IRIs rather than prefixed names, because Turtle does
+        not allow a comma inside a prefixed name.
+      </p>
+      <div class="file-viewer">
+        <div class="file-viewer-header"><strong>tiresias_graph.ttl</strong><span>Turtle / RDF</span></div>
+        <pre data-src="../ttl/tiresias_graph.ttl">Loading preview…</pre>
+      </div>
+      <div class="resource-link-box">
+        <a href="../ttl/tiresias_graph.ttl" target="_blank" rel="noopener">Open full file <span class="ext-arrow">↗</span></a>
+      </div>
+
+      <h3 class="workflow-sub">RDF visualization</h3>
+      <figure class="graph-figure" data-zoom>
+        <div class="graph-controls" role="group" aria-label="Graph zoom">
+          <button type="button" data-zoom-out aria-label="Zoom out">−</button>
+          <span class="graph-zoom-level" aria-live="polite">100%</span>
+          <button type="button" data-zoom-in aria-label="Zoom in">+</button>
+          <button type="button" data-zoom-reset>Reset</button>
+        </div>
+        <div class="graph-viewport">
+          <img src="../assets/models/rdf-grapher.png" alt="RDF graph generated from the TEI-derived dataset on Tiresias" loading="lazy">
+        </div>
+        <figcaption class="figure-caption">
+          <a href="../assets/images/rdf-grapher.png" target="_blank" rel="noopener">Open full graph <span class="ext-arrow">↗</span></a>
+        </figcaption>
+      </figure>
+    </section>
+
+    <p class="closing-note">
+      Together, the encoding, the ontology and the transformations translate a selected source text into an interoperable
+      RDF representation. By connecting persons, deities, places, events and works through shared identifiers and explicit
+      relations, the resulting graph makes visible how the figure of Tiresias links myth, early modern art and modernist poetry.
+    </p>
+
+    <div class="back-to-top">
+      <p ><a href="#top">Back to top</a></p>
+    </div>
+
+    
+
+  </main>
+
+  <!-- Stanford Encyclopedia of Philosophy Style Academic Footer -->
+  <footer class="sep-footer">
+    <div class="sep-footer-inner">
+      <div class="sep-footer-col">
+        <strong>Tiresias: A Linked Open Data Exploration</strong><br>
+        Information Science and Cultural Heritage (DHDK) · A.Y. 2025/2026<br>
+        Alma Mater Studiorum – Università di Bologna
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Load each file preview from its data-src path.
+    document.querySelectorAll('pre[data-src]').forEach(function (pre) {
+      fetch(pre.dataset.src)
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.text();
+        })
+        .then(function (text) { pre.textContent = text; })
+        .catch(function () {
+          pre.textContent = 'Preview not available. Use "Open full file" below. ' +
+            '(Previews load only when the site is served, e.g. on GitHub Pages, not when the page is opened from disk.)';
+        });
+    });
+
+    // Zoom controls for the graph figure.
+    document.querySelectorAll('[data-zoom]').forEach(function (fig) {
+      var img = fig.querySelector('img');
+      var label = fig.querySelector('.graph-zoom-level');
+      var scale = 1;
+      function apply() {
+        img.style.width = (scale * 100) + '%';
+        label.textContent = Math.round(scale * 100) + '%';
+      }
+      fig.querySelector('[data-zoom-in]').addEventListener('click', function () { scale = Math.min(scale + 0.25, 4); apply(); });
+      fig.querySelector('[data-zoom-out]').addEventListener('click', function () { scale = Math.max(scale - 0.25, 0.5); apply(); });
+      fig.querySelector('[data-zoom-reset]').addEventListener('click', function () { scale = 1; apply(); });
+    });
+  </script>
+</body>
+</html>
